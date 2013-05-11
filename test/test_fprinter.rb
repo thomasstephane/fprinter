@@ -1,3 +1,4 @@
+require_relative '../lib/fprinter'
 # FPrinter.bold("This is a bold print test")
 # FPrinter.blink("This is a blink print test")
 # FPrinter.underline("This is a undelined print test")
