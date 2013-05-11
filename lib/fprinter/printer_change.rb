@@ -1,5 +1,5 @@
 require_relative 'screen.rb'
-module Printer
+module FPrinter
 
   def self.slow(str, sec = 0.05)
     str.split("").each do |l| 

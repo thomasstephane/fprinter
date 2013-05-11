@@ -1,4 +1,4 @@
-module Printer
+module FPrinter
    
   def self.clean!
     print "\e[2J"

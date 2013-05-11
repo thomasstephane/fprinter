@@ -1,5 +1,5 @@
 require_relative 'screen.rb'
-module Printer
+module FPrinter
   def self.bold(str)
     print "\e[1m" + str + "\e[0m\n"
   end
