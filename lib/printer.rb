@@ -1,4 +1,3 @@
-require 'printer/slow_print.rb'
-
-module Printer
-end
+require 'printer/display_change'
+require 'printer/printer_change'
+require 'printer/screen'
