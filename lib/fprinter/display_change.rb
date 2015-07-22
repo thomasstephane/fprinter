@@ -1,83 +1,39 @@
 require_relative 'screen.rb'
 module FPrinter
-  def self.bold(str)
-    print "\e[1m" + str + "\e[0m\n"
+
+  CONSOLE_MATCHES = {
+    bold: "\e[1m",
+    blink: "\e[5m",
+    underline: "\e[4m" ,
+    highlight: "\e[7m" ,
+    black: "\e[30m",
+    red: "\e[31m",
+    green: "\e[32m",
+    yellow: "\e[33m",
+    blue: "\e[34m",
+    magenta: "\e[35m",
+    cyan: "\e[36m",
+    white: "\e[37m",
+    highlighted_black: "\e[40m",
+    highlighted_red: "\e[41m",
+    highlighted_green: "\e[42m",
+    highlighted_yellow: "\e[43m",
+    highlighted_blue: "\e[44m",
+    highlighted_magenta: "\e[45m",
+    highlighted_cyan: "\e[46m",
+    highlighted_white: "\e[47m"
+  }
+
+  CONSOLE_MATCHES.each do |matcher, color_code|
+    define_singleton_method(matcher) do |str|
+      print color_code + str + "\e[0m\n"
+    end
   end
-  
-  def self.blink(str, sec = 1)
-    print "\e[5m" + str + "\e[0m\n"
-  end
-  
-  def self.underline(str)
-    print "\e[4m" + str + "\e[0m\n"
-  end
-  
-  def self.highlight(str)
-    print "\e[7m" + str + "\e[0m\n"
-  end
-  
-  def self.black(str)
-    print "\e[30m" + str + "\e[0m\n"
-  end
-  
-  def self.red(str)
-    print "\e[31m" + str + "\e[0m\n"
-  end
-  
-  def self.green(str)
-    print "\e[32m" + str + "\e[0m\n"
-  end
-  
-  def self.yellow(str)
-    print "\e[33m" + str + "\e[0m\n"
-  end
-  
-  def self.blue(str)
-    print "\e[34m" + str + "\e[0m\n"
-  end
-  
-  def self.magenta(str)
-    print "\e[35m" + str + "\e[0m\n"
-  end
-  
-  def self.cyan(str)
-    print "\e[36m" + str + "\e[0m\n"
-  end
-  
-  def self.white(str)
-    print "\e[37m" + str + "\e[0m\n"
-  end
-  
-  def self.highlighted_black(str)
-    print "\e[40m" + str + "\e[0m\n"
-  end
-  
-  def self.highlighted_red(str)
-    print "\e[41m" + str + "\e[0m\n"
-  end
-  
-  def self.highlighted_green(str)
-    print "\e[42m" + str + "\e[0m\n"
-  end
-  
-  def self.highlighted_yellow(str)
-    print "\e[43m" + str + "\e[0m\n"
-  end
-  
-  def self.highlighted_blue(str)
-    print "\e[44m" + str + "\e[0m\n"
-  end
-  
-  def self.highlighted_magenta(str)
-    print "\e[45m" + str + "\e[0m\n"
-  end
-  
-  def self.highlighted_cyan(str)
-    print "\e[46m" + str + "\e[0m\n"
-  end
-  
-  def self.highlighted_white(str)
-    print "\e[47m" + str + "\e[0m\n"
+
+  CONSOLE_MATCHES.each do |matcher, color_code|
+    define_singleton_method("#{matcher}!") do
+      print color_code
+    end
   end
 
   def self.big(str)
@@ -150,13 +106,3 @@ BIG_LETTERS = { "a" => 0,
               "@" => 241,
               "A" => 251
 }
-
-
-
-
-
-
-
-
-
-
